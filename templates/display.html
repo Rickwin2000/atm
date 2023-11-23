@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #0f1b42; /* Dark blue background color */
+      color: #fff; /* Text color - white */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .transaction-box {
+      background-color: rgba(72, 102, 192, 0.9); /* Dark blue semi-transparent background */
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(211, 185, 185, 0.1);
+      width: 30%; /* Increased width */
+      text-align: center; /* Centered text */
+      margin: 20px; /* Added margin for spacing */
+      position: relative; /* Added position for relative positioning */
+    }
+
+    .close-button {
+      position: absolute; /* Positioned absolutely */
+      top: -10px;
+      right: -10px;
+      background-color: #fff;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      line-height: 20px;
+      text-align: center;
+      cursor: pointer;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+      color: #000;
+    }
+
+    .transaction-options {
+      width: 100%; /* Full width for options */
+      text-align: center; /* Centered text */
+      margin-bottom: 2px; /* Added margin for spacing */
+      display: flex; /* Display options in a row */
+      justify-content: space-around; /* Evenly spaced */
+    }
+
+    .transaction-options ul {
+      list-style-type: none; /* Remove default list styles */
+      padding: 0;
+      display: flex; /* Display options in a row */
+      justify-content: space-around; /* Evenly spaced */
+      width: 100%;
+      margin: 0; /* Reset margin */
+    }
+
+    .transaction-options ul li {
+      width: 45%; /* Adjusted width for options */
+      padding: 20px; /* Padding around the items */
+      background-color: #000; /* Black background */
+      border-radius: 5px; /* Rounded corners */
+      cursor: pointer; /* Cursor pointer */
+      flex: 1; /* Equal width for all options */
+      margin: 5px;
+    }
+
+    #data-name {
+      padding: 4px 5px;
+      font-weight: 550;
+      color: #000000;
+      font-size: 24px;
+      border-radius: 4px;
+    }
+
+    .transaction-options ul:nth-child(2) {
+      justify-content: space-between; /* Space between Amount Deposit and Mini Statement */
+    }
+  </style>
+</head>
+<body>
+  <div class="transaction-box">
+    <span class="close-button" onclick="window.location.href='/'">X</span>
+    <h3>Welcome <span id="data-name">{{data.name}} !!</span></h3>
+    <p>Please select a transaction</p>
+    <div class="transaction-options">
+      <ul>
+        <li onclick="window.location.href='/balance?card_number={{data.card_number}}'">Balance Enquiry</li>
+        <li onclick="window.location.href='/withdrawal?card_number={{data.card_number}}'">Amount Withdrawal</li>
+      </ul>
+    </div>
+    <div class="transaction-options">
+      <ul>
+        <li onclick="window.location.href='/deposit?card_number={{data.card_number}}'">Amount Deposit</li>
+        <li onclick="window.location.href='/transaction?card_number={{data.card_number}}'">Mini Statement</li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>

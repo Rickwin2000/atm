@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elite ATM</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #0f1b42; /* Dark blue background color */
+      color: #fff; /* Text color - white */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    .msg-display {
+      background-color: #ffcc00; /* Yellow background color */
+      color: #000000; /* Text color - dark */
+      padding: 10px; /* Padding around the message */
+      border-radius: 8px; /* Rounded corners */
+      max-width: 500px; /* Match the width of the .atm-box */
+      margin: 20px auto; /* Center horizontally and add margin */
+    }
+
+    .atm-box {
+      background-color: rgba(72, 102, 192, 0.9); /* Dark blue semi-transparent background */
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(211, 185, 185, 0.1);
+      max-width: 500px; /* Increased width */
+      text-align: left; /* Left-aligned text */
+      margin: 20px auto; /* Center horizontally and add margin */
+    }
+
+    input[type="text"] {
+      width: calc(100% - 22px);
+      padding: 10px;
+      margin-bottom: 15px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    input[type="submit"],
+    .button-next {
+      width: 100%; /* Changed to auto width */
+      padding: 10px 40px; /* Adjusted padding */
+      border-radius: 5px;
+      border: none;
+      background-color: #007bff; /* Blue button color */
+      color: #fff;
+      cursor: pointer;
+      display: block; /* Adjusted display */
+      text-decoration: none; /* Removed underlines */
+      text-align: center; /* Centered text */
+      margin-bottom: 15px; /* Added margin for spacing */
+    }
+
+    input[type="submit"]:hover,
+    .button-next:hover {
+      background-color: #0056b3; /* Darker blue on hover */
+    }
+
+    .button-next {
+      float: left; /* Right alignment */
+      margin-right: 5px; /* Added right margin */
+    }
+
+    .or {
+      text-align: center !important;
+      margin: 52px auto 20px; /* Reset margins */
+      display: block; /* Ensure it's a block-level element */
+      
+    }
+    .register-card {
+      background-color: rgba(0, 0, 0, 0.9); /* Background color for "Register a card" */
+      padding: 10px 40px; /* Adjusted padding */
+      border-radius: 8px;
+      text-align: center;
+      cursor: pointer; /* Added cursor as pointer for clickable feel */
+      margin-bottom: 10px; /* Added margin */
+    }
+
+    .register-card a {
+      color: #fff;
+      text-decoration: none;
+    }
+    
+  </style>
+</head>
+<body>
+  <div class="container">
+    {% if data.message %}
+    <div class="msg-display">{{ data.message }}</div>
+    {% endif %}
+    <div class="atm-box">
+      <h1>Welcome to Elite ATM</h1>
+      <p>Please enter your card number:</p>
+      <form action="/" method="POST">
+        <input type="text" name="card_number" placeholder="Card Number" required>
+        <input type="submit" value="Next" class="button-next">
+      </form>
+      <div class="or">or</div>
+      <div class="register-card" onclick="window.location.href='/register'">
+        <a href="/register">Register a card</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Remove error message after 8 seconds
+    setTimeout(function() {
+      var errorMessage = document.querySelector('.msg-display');
+      if (errorMessage) {
+        errorMessage.style.display = 'none';
+      }
+    }, 5000);
+  </script>
+</body>
+</html>
